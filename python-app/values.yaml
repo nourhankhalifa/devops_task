@@ -1,0 +1,42 @@
+# Default values for python-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: default
+
+app:
+  name: python-app
+  replicaCount: 1
+  image:
+    repository: nourhankhalifa/python-app
+    tag: latest
+  port: 5000
+  env:
+    MONGO_URI: mongodb://mongo:27017
+
+mongo:
+  name: mongo
+  replicaCount: 1
+  image:
+    repository: mongo
+    tag: latest
+  port: 27017
+
+prometheus:
+  name: prometheus
+  replicaCount: 1
+  image:
+    repository: prom/prometheus
+    tag: latest
+  port: 9090
+  configMap:
+    enabled: true
+    configPath: prometheus.yml
+
+grafana:
+  name: grafana
+  replicaCount: 1
+  image:
+    repository: grafana/grafana
+    tag: latest
+  port: 3000

@@ -1,0 +1,13 @@
+# templates/prometheus-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.prometheus.name }}-service
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: {{ .Values.prometheus.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.prometheus.port }}
+      targetPort: {{ .Values.prometheus.port }}

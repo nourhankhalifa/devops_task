@@ -1,0 +1,13 @@
+# templates/grafana-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.grafana.name }}-service
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: {{ .Values.grafana.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.grafana.port }}
+      targetPort: {{ .Values.grafana.port }}
